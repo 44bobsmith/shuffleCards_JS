@@ -2,126 +2,20 @@
 <html>
 
 <head>
+  <meta charset="utf-8" />
+  <link type="text/css" rel="stylesheet" href="shuffleCards.css">
+
+  <Title>Shuffled Deck</Title>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="shuffleCards.js">
+    <SCRIPT LANGUAGE="JavaScript">
+    </script>
 </head>
 <body>
-
-<p>
-
-<script>
-
-function card(value) {
-
-  this.inDeck = true;
-
-  this.changeFaceValue = function (value) {
-    switch (value) {
-      case 0:
-      case 13:
-      case 26:
-      case 39:
-        return 'ace';
-      break;
-      case 10:
-      case 23:
-      case 36:
-      case 49:
-        return 'jack';
-      break;
-      case 11:
-      case 24:
-      case 37:
-      case 50:
-        return 'queen';
-      break;
-      case 12:
-      case 25:
-      case 38:
-      case 51:
-        return 'king';
-      break;
-      default:
-        if (value < 13) {
-          return (value + 1).toString();
-        } else if (value < 26) {
-          return (value - 12).toString()
-        } else if (value < 39) {
-          return (value - 25).toString()
-        } else {
-          return (value -38).toString();
-        };
-
-    };
-  };
-
-  this.faceValue = this.changeFaceValue(value);
-
-  this.aceCheck = function (value) {
-    if (value % 13 === 0) {
-      return true;
-    } else {
-      return false;
-    };
-  };
-
-  this.ace = this.aceCheck(value);
-
-  this.changeSuit = function (value) {
-    if (value < 13) {
-      return 'HEARTS';
-    } else if (value < 26) {
-      return 'DIAMONDS';
-    } else if (value < 39) {
-      return 'SPADES';
-    } else {
-      return 'CLUBS';
-    };
-  };
-
-  this.suit = this.changeSuit(value);
-
-  this.setCardValue = function(value) {
-    switch (value) {
-      case 0:
-      case 13:
-      case 26:
-      case 39:
-        return 11;
-      break;
-      case 10:
-      case 11:
-      case 12:
-      case 23:
-      case 24:
-      case 25:
-      case 36:
-      case 37:
-      case 38:
-      case 49:
-      case 50:
-      case 51:
-        return 10;
-      break;
-      default:
-        return parseInt(this.faceValue);
-      };
-    };
-
-  this.cardValue = this.setCardValue(value);
-
-  };
+<button id="shuffle">shuffle the deck</button>
+<div id="output"></output>
 
 
-var newDeck = new Array();
-
-for (var j = 0; j <= 51; j++){
-  newDeck[j] = new card (j);
-  document.write(newDeck[j].faceValue + " ");
-  document.write(newDeck[j].suit + " ");
-  document.write(newDeck[j].ace + " ");
-  document.write(newDeck[j].cardValue + " ")
-  document.write(newDeck[j].inDeck + "<br>");
-};
-
-</script>
-</p>
 </body>
