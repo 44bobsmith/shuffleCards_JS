@@ -75,13 +75,13 @@ function card(value) {
         return 11;
       case 11:
       case 12:
-      case 23:
+      case 13:
       case 24:
       case 25:
-      case 36:
+      case 26:
       case 37:
       case 38:
-      case 49:
+      case 39:
       case 50:
       case 51:
       case 52:
@@ -97,18 +97,24 @@ function card(value) {
 
 
 var newDeck = new Array();
-newDeck[0] = 52;
 
-for (var j = 1; j <= 52; j++){
-  newDeck[j] = new card (j);
+//creates a new deck in order. 0 index hold # of cards in deck
+function createNewDeck() {
+  newDeck[0] = 0;
+  for (var j = 1; j <= 52; j++){
+    newDeck[j] = new card (j);
+    newDeck[0] += 1;
+  }
 }
 
 
 var shuffledDeck = new Array();
 shuffledDeck[0] = 0;
 
+//creates a new deck and then shuffles it.
 function shuffle() {
-  while (newDeck[0]>0 && shuffledDeck[0]<=52) {
+  createNewDeck();
+    while (newDeck[0]>0 && shuffledDeck[0]<=52) {
     var cardPicker = Math.floor(Math.random() * 52) + 1;
     console.log(cardPicker);
     if (newDeck[cardPicker].inDeck) {
@@ -122,11 +128,21 @@ function shuffle() {
   }
 }
 
+//generates a new deck in using the #freshDeck button
+$('#freshDeck').click (function() {
+  createNewDeck();
+  $('#testArea').append(newDeck[0] + '<br>');
+  for (var i=1; i <=52; i++) {
+      $('#testArea').append(i + ': ' + newDeck[i].faceValue + ' of ' + newDeck[i].suit + '(' + newDeck[i].cardValue + ')' + '<br>');
+    }
+});
+
+//generates a shuffled deck when #shuffle button is pressed
   $('#shuffle').click (function() {
     shuffle();
     for (var i=1; i <=52; i++) {
-    $('#output').append(i + ': ' + shuffledDeck[i].faceValue + ' of ' + shuffledDeck[i].suit + '<br>');
-  }
+        $('#testArea').append(i + ': ' + shuffledDeck[i].faceValue + ' of ' + shuffledDeck[i].suit + '(' + shuffledDeck[i].cardValue + ')' + '<br>');
+      }
     });
 
 
