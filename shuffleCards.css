@@ -7,6 +7,7 @@ body {
   width: 600px;
   background-color: black;
   color: white;
+  text-align: center;
 }
 
 #highCard {
@@ -15,15 +16,12 @@ body {
 
 #dealer {
   margin-top: 5%;
-  text-align: center;
 }
 
 #player {
   margin top: 8%;
-  text-align: center;
 }
 
 #result {
   margin-top: 15%;
-  text-align: center;
 }

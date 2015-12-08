@@ -170,10 +170,17 @@ $('#freshDeck').click (function() {
 $('#highCard').click (function() {
     $('#playerHand').empty();
     $('#dealerHand').empty();
+    $('#result').empty();
     dealFirstCard();
     $('#playerHand').append(player[0].faceValue + ' of ' + player[0].suit);
     $('#dealerHand').append(dealer[0].faceValue + ' of ' + dealer[0].suit);
-    
+    if (player[0].cardValue > dealer[0].cardValue) {
+      $('#result').append('YOU Win!');
+    } else if (player[0].cardValue < dealer[0].cardValue) {
+      $('#result').append('Dealer Wins. Better luck next time.');
+    } else {
+      $('#result').append("It's a tie!");
+    }
     });
 
 });
