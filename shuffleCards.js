@@ -136,9 +136,9 @@ var dealer = [];
 function dealFirstCard() {
   shuffle();
   console.log(shuffledDeck[0]);
-  player.push(shuffledDeck[1]);
+  player[0]=shuffledDeck[1];
   shuffledDeck.splice(1,1);
-  dealer.push(shuffledDeck[1]);
+  dealer[0]=shuffledDeck[1];
   shuffledDeck.splice(1,1);
   shuffledDeck[0] = shuffledDeck.length - 1;
   console.log(shuffledDeck[0]);
@@ -168,9 +168,12 @@ $('#freshDeck').click (function() {
 
 //run dealFirstCard function and display results
 $('#highCard').click (function() {
+    $('#playerHand').empty();
+    $('#dealerHand').empty();
     dealFirstCard();
-    $('#player').append(player[0].faceValue + ' of ' + player[0].suit);
-    $('#dealer').append(dealer[0].faceValue + ' of ' + dealer[0].suit);
+    $('#playerHand').append(player[0].faceValue + ' of ' + player[0].suit);
+    $('#dealerHand').append(dealer[0].faceValue + ' of ' + dealer[0].suit);
+    
     });
 
 });
