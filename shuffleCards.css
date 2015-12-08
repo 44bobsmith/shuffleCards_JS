@@ -8,3 +8,22 @@ body {
   background-color: black;
   color: white;
 }
+
+#highCard {
+  margin-top: 25%;
+}
+
+#dealer {
+  margin-top: 5%;
+  text-align: center;
+}
+
+#player {
+  margin top: 8%;
+  text-align: center;
+}
+
+#result {
+  margin-top: 15%;
+  text-align: center;
+}
