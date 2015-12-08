@@ -96,7 +96,7 @@ function card(value) {
   }
 
 
-var newDeck = new Array();
+var newDeck = [];
 
 //creates a new deck in order. 0 index hold # of cards in deck
 function createNewDeck() {
@@ -108,7 +108,7 @@ function createNewDeck() {
 }
 
 
-var shuffledDeck = new Array();
+var shuffledDeck = [];
 shuffledDeck[0] = 0;
 
 //creates a new deck and then shuffles it.
@@ -128,6 +128,26 @@ function shuffle() {
   }
 }
 
+//shuffle and deal for high card
+
+var player = [];
+var dealer = [];
+
+function dealFirstCard() {
+  shuffle();
+  console.log(shuffledDeck[0]);
+  player.push(shuffledDeck[1]);
+  shuffledDeck.splice(1,1);
+  dealer.push(shuffledDeck[1]);
+  shuffledDeck.splice(1,1);
+  shuffledDeck[0] = shuffledDeck.length - 1;
+  console.log(shuffledDeck[0]);
+
+}
+
+
+
+
 //generates a new deck in using the #freshDeck button
 $('#freshDeck').click (function() {
   createNewDeck();
@@ -145,5 +165,12 @@ $('#freshDeck').click (function() {
       }
     });
 
+
+//run dealFirstCard function and display results
+$('#highCard').click (function() {
+    dealFirstCard();
+    $('#player').append(player[0].faceValue + ' of ' + player[0].suit);
+    $('#dealer').append(dealer[0].faceValue + ' of ' + dealer[0].suit);
+    });
 
 });
